@@ -6,11 +6,11 @@ def fibonacci(n):
 
     # check to see if input value is a integer
     if type(n) != int:
-        raise TypeError('n must be a positive int')
+        return 'n must be of type int'
 
     # check to see if input value is positive    
     if n < 1:
-        raise ValueError('n must be a positive int')
+        return 'n must greater or equal to 1'
 
     # if 1 was passed in as nth
     if n == 1: 
@@ -29,19 +29,19 @@ def gcd(a, b):
     """Function that takes in two integers and returns the greatest common divisor.
     param: a: first number 
     param: b: second number 
-    return: gcd: greatest common divisor of both numbers
+    return: greatest common divisor of both numbers
     """
 
     # check to see if input valaues are positive integer
     if type(a) != int or type(b) != int:
-        raise TypeError('n must be a positive int')
+        return 'n must be an int'
     
     # check to see if b is equal to zero
     if b == 0:
         return a
     
     else:
-        return gcd(b, a%b)
+        return gcd(b, a % b)
 
 
 def compareTo(s1, s2):
@@ -66,3 +66,45 @@ def compareTo(s1, s2):
     else:
         # call compareTo and pass in both strings starting at index 1
         return compareTo(s1[1:], s2[1:])
+
+ 
+if __name__ == '__main__':
+    
+
+    # print displays for some calls to fibonacci function
+
+    print()
+    print('Part 1:')
+    print('-' * 10)
+    print()
+
+    print(fibonacci(0))     # message printed about size
+    print(fibonacci('A'))   # message printed about type
+    print(fibonacci(2.1))   # message printed about type
+    print(fibonacci(1))     # 1
+    print(fibonacci(2))     # 1
+    print(fibonacci(9))     # 34
+    
+    # print displays for some calls to gcd function
+
+    print()
+    print('Part 2:')
+    print('-' * 10)
+    print()
+
+    print(gcd(1, 1))        # 1
+    print(gcd(100, 25))     # 25
+    print(gcd(50, 1000))    # 50
+    print(gcd(1, 'a'))      # message printed about type         
+    print(gcd(-10, 100))    # 10
+
+    # print displays for some calls to comparTo function
+
+    print()
+    print('Part 3:')
+    print('-' * 10)
+    print()
+
+    print(compareTo('Same Length', 'Same Length'))              # 0
+    print(compareTo('String 1 is Longer than', 'String 2'))     # 1
+    print(compareTo('String 1', 'is shorter than String 2'))    # -1
